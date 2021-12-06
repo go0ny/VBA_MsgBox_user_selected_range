@@ -1,0 +1,44 @@
+Option Explicit
+
+Private Function selectRange(myRange) As Range
+    
+    On Error GoTo myError
+        Set myRange = Application.InputBox( _
+            Title:="Sélectionner les cellules", _
+            Prompt:="La macro lira le contenu des cellules", _
+            Type:=8)
+            
+    Set selectRange = myRange
+    
+    Exit Function
+
+myError:
+    MsgBox "Problème de sélection de range"
+
+End Function
+Private Sub handleRange(myRange)
+    
+    Dim cel As Range
+    
+    For Each cel In myRange
+        MsgBox cel.Value
+    Next cel
+    
+    Exit Sub
+    
+myError:
+    MsgBox "Problème de traitement de range"
+
+End Sub
+
+Sub test()
+
+    Dim myRange As Range
+    Dim monRange As Range
+    Dim cel As Range
+
+    Set monRange = selectRange(myRange)
+    
+    Call handleRange(monRange)
+
+End Sub
