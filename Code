@@ -20,9 +20,11 @@ Private Sub handleRange(myRange)
     
     Dim cel As Range
     
-    For Each cel In myRange
-        MsgBox cel.Value
-    Next cel
+    On Error GoTo myError
+        
+        For Each cel In myRange
+            MsgBox cel.Value
+        Next cel
     
     Exit Sub
     
